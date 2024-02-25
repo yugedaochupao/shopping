@@ -1,176 +1,133 @@
 <template>
-    <div class="log">
-        <div class="abox">
-            <div class="box">
-                <div class="text">
-                    <div >
-                        <img src="../assets/12639c5fad8a7a884f47ed84aa8f11f.png">
-                    </div>
-
-
-                </div>
-                <div class="user">
-                    <div class="text1">Username(Teacher No./Student No.):</div>
-                    <input id="username" name="username" v-model="username" class="input-1" type="text" style=" padding-left: 10px; width: 90%; height: 49%;border-radius: 4px; border: none; ">
-
-                </div>
-                <div class="password">
-                    <div class="text2">Password(Same as URP platform):</div>
-                    <input id="password" name="password" v-model="password" class="i2" type="password" style="padding-left: 10px; width: 90%; height: 49%;border-radius: 4px;border: none;background: rgb(240, 240, 240);">
-                </div>
-
-                <div class="bu">
-                    <button class="butt" style="font-size: 14px; font-weight: bold;" @click="login">LOGIN</button>
-                    
-
-                </div>
-                {{loginresult}}
-
-            </div>
-
+    <div class="shopping-login">
+      <div class="login-box">
+        <!-- <div class="logo">
+          <img src="../assets/shoplogo.png">
+        </div> -->
+        <div class="user">
+          <label for="username" class="label">用户名:</label>
+          <input id="username" name="username" v-model="username" class="input" type="text" placeholder="账号名/邮箱/手机号" autocomplete="off">
         </div>
-
+        <div class="password">
+          <label for="password" class="label">密码:</label>
+          <input id="password" name="password" v-model="password" class="input" type="password" placeholder="请输入登录密码" autocomplete="off">
+        </div>
+        <div class="login-button">
+          <button class="login-btn" @click="login">登录</button>
+        </div>
+        <div class="additional-info">
+            <p class="additional-text">忘记密码</p>
+            <p class="additional-text">忘记账号名</p>
+            <p class="additional-text">免费注册</p>
+          </div>
+        <div class="login-result">
+          {{ loginresult }}
+        </div>
+      </div>
     </div>
-
-
-
-    
-</template>
-
-<style>
-.abox{
+  </template>
+  
+  <style>
+  .shopping-login {
     width: 100%;
-    height: 1200px;
-    border: 2px solid #000;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url('../assets/1d995a32f9727f8c24d730bb51d4611.png') ;
-    background-color: white;
-    background-position: center;
-    background-repeat: no-repeat;
+    background: url('../assets/shop.png');
     background-size: cover;
-}
-.box{
+  }
+  
+  .login-box {
     width: 350px;
-    height: 380px;
-    /* border: 1px solid #000; */
-    background: rgb(255, 255, 255);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border-radius: 5px;
-    border: none;
-}
-.text{
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+  }
+  
+  /* .logo img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+  }
+   */
+  .user,
+  .password {
+    margin-bottom: 20px;
+
+  }
+  
+  .label {
+    font-size: 16px;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+input {
     width: 100%;
-    height: 95px;
-    /* border: 1px solid #000; */
-    margin: 0px 0px 12px 0px;
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-}
-.user{
-    width: 90%;
-    height: 80px;
-    /* border: 1px solid #000; */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 2px 2px 8px 0;
-}
-.password{
-    width: 90%;
-    height: 80px;
-    /* border: 1px solid #000; */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 2px 2px 8px 0;
-}
-.butt{
-    width: 98%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  .login-button {
+    margin-bottom: 20px;
+  }
+  
+  .login-btn {
+    width: 100%;
     height: 40px;
-    background: rgb(2, 192, 192);
-    color: aliceblue;
-    border: darkblue;
-    border-radius: 4px 4px 4px 4px;
+    background: rgb(194, 26, 26);
+    color: white;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+  }
 
-}
-.bu{
-    width: 90%;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.text1{
-    width: 95%;
-    height: 30%;
-    font-size: 15px;
-    color: gray;
-    text-align: left;
-    margin: 3px 3px 3px 9px;
+  .additional-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #333;
+  }
 
-}
-.text2{
-    width: 95%;
-    height: 30%;
-    font-size: 15px;
-    color: gray;
-    text-align: left;
-    margin: 3px 3px 3px 9px;
+.additional-text {
+  cursor: pointer;
+  }
 
-}
-.input-1{
-    transition:0.3s;
-    background: rgb(240, 240, 240);
-    border:none;
+.login-result {
+    color: rgb(0, 0, 0);
+    font-size: 14px;
+    font-weight: bold;
+  }
+  </style>
+  
 
 
-
-}
-.input-1:hover{
-    background: rgb(255, 255, 255);
-    border: 2px solid rgb(2, 192, 192);
-
-}
-.i2:hover{
-    background: rgb(255, 255, 255);
-
-}
-
-
-</style>
-
-
-<script>
- export default {
-  data() {
-    return {
-      username: '',
-      password: '',
-      loginresult: '',
+  <script>
+    export default {
+      data() {
+        return {
+            username: '',
+            password: '',
+            loginresult: '',
     };
   },
-  methods: {
-    login() {
-      if (this.username === '123' && this.password === '123' ||
-       this.username === '1234' && this.password === '12345' ||
-       this.username === 'D21090103670' && this.password === '123' ) {
-        this.loginresult = '登录成功';
-      } else {
-        this.loginresult = '登录失败';
-      }
-    },
-  },
-};
-
+      methods: {
+        login() {
+            if (this.username === '123' && this.password === '123') {
+            this.loginresult = '登录成功';
+            this.$router.push('/shop'); // 登录成功后重定向到商品页面
+          } else {
+            this.$data.loginresult = '登录失败';
+          }
+        },
+      },
+    };
     </script>
